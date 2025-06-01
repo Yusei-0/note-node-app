@@ -1,23 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
-// Define a GET route for /
 router.get('/', (req, res) => {
   res.render('home', {
-    title: 'Minimal Home (hbs)',
-    layout: 'layouts/main' // Changed to explicit path
+    title: 'Home - Notes App', // Updated title
+    layout: 'layouts/main'
   });
 });
 
-/*
-// Comment out other routes for now
 router.get('/login', (req, res) => {
-  res.render('login', { title: 'Login' });
+  res.render('login', { // Will render login.hbs
+    title: 'Login - Notes App',
+    layout: 'layouts/main'
+  });
 });
 
 router.get('/notes/new', (req, res) => {
-  res.render('create-note', { title: 'Create New Note' });
+  res.render('create-note', { // Will render create-note.hbs
+    title: 'Create New Note - Notes App',
+    layout: 'layouts/main'
+  });
 });
-*/
 
 module.exports = router;

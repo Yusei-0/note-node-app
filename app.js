@@ -1,30 +1,26 @@
 const express = require('express');
 const path = require('path');
-const hbs = require('hbs'); // Using hbs
+const hbs = require('hbs');
 const indexRouter = require('./routes/index');
 
 const app = express();
 
 // View engine setup
-app.set('view engine', 'hbs'); // Set view engine to hbs
-app.set('views', path.join(__dirname, 'views')); // Standard views directory
-
-// Register partials directory (can be used for layouts with hbs)
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/layouts'));
-// If you have other partials (like headers, footers not as full layouts)
-// hbs.registerPartials(path.join(__dirname, 'views/partials'));
+// hbs.registerPartials(path.join(__dirname, 'views/partials')); // If we add other partials
 
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Minimal route
+// Routes
 app.use('/', indexRouter);
 
-// Basic error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke! (hbs setup)');
-});
-
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Minimal server (hbs) running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`); // Restored generic message
 });
