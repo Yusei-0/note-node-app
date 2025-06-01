@@ -4,10 +4,9 @@ const app = express();
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
-app.use(expressLayouts);
-
 // Set the views directory
 app.set('views', './views');
+app.use(expressLayouts);
 
 // Middleware for parsing URL-encoded data
 app.use(express.urlencoded({ extended: true }));
