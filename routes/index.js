@@ -3,7 +3,10 @@ const router = express.Router();
 
 // Define a GET route for /
 router.get('/', (req, res) => {
-  res.render('home', { title: 'Minimal Home' }); // Pass a title
+  res.render('home', {
+    title: 'Minimal Home (hbs)',
+    layout: 'main' // Specify the layout file (main.hbs from views/layouts)
+  });
 });
 
 /*
