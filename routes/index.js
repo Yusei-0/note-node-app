@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.render('home', {
     title: 'Minimal Home (hbs)',
-    layout: 'main' // Specify the layout file (main.hbs from views/layouts)
+    layout: 'layouts/main' // Changed to explicit path
   });
 });
 
