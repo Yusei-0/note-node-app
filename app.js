@@ -1,30 +1,29 @@
 const express = require('express');
+const path = require('path'); // Keep path for robust views path
 const expressLayouts = require('express-ejs-layouts');
-const path = require('path');
+const indexRouter = require('./routes/index'); // Keep router for the single route
+
 const app = express();
 
-// Set EJS as the view engine
+// View engine setup
 app.set('view engine', 'ejs');
-// Set the views directory
 app.set('views', path.join(__dirname, 'views'));
+
+// Express EJS Layouts setup
 app.use(expressLayouts);
-app.set('layout', 'layouts/main'); // Set default layout
+app.set('layout', 'layouts/main'); // Keep default layout setting
 
-// Middleware for parsing URL-encoded data
-app.use(express.urlencoded({ extended: true }));
-
-// Middleware for parsing JSON data
-app.use(express.json());
-
-// Middleware for serving static files
-app.use(express.static('public'));
-
-// Routes
-const indexRouter = require('./routes/index');
+// Minimal route
 app.use('/', indexRouter);
 
-// Start the server (Add a basic listener for now)
+// Basic error handler (optional, but good for debugging)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+// Start the server (keep this)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Minimal server running on port ${PORT}`);
 });

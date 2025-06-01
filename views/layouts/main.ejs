@@ -2,28 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title ? title + ' | ' : '' %>Notes App</title>
-  <link rel="stylesheet" href="/css/output.css">
+  <title><%= title ? title : "Minimal App" %></title>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
-  <header class="bg-blue-600 text-white p-4 shadow-md">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">My Notes App</h1>
-      <nav>
-        <a href="/" class="px-3 hover:text-blue-200">Home</a>
-        <a href="/login" class="px-3 hover:text-blue-200">Login</a>
-        <a href="/notes/new" class="px-3 hover:text-blue-200">Create Note</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container mx-auto p-4 mt-6">
-    <%- body %>
-  </main>
-
-  <footer class="bg-gray-700 text-white p-4 text-center mt-12">
-    <p>&copy; 2023 Notes App. All rights reserved.</p>
-  </footer>
+<body>
+  <%- body %>
 </body>
 </html>
