@@ -1,12 +1,14 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
+const path = require('path');
 const app = express();
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 // Set the views directory
-app.set('views', './views');
+app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
+app.set('layout', 'layouts/main'); // Set default layout
 
 // Middleware for parsing URL-encoded data
 app.use(express.urlencoded({ extended: true }));
